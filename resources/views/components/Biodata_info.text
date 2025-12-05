@@ -1,0 +1,317 @@
+Biodata_id= DSBN4568
+
+id="general-information"
+biodata_type
+married_type
+date_of_birth
+face_color
+height
+weight
+body_shape
+blood_group
+generalinfo_validate
+
+id="address-information"
+permanent_address
+[permanent_upazila
+permanent_district
+permanent_division
+permanent_country]
+permanent_ads_extra
+
+current_address
+[current_upazila
+current_district
+current_division
+current_country]
+current_ads_extra
+born_raised
+location_picker_checkbox
+address_validate
+
+id="education-information"
+education_type
+highest_education_general
+under_ssc_class
+ssc_passing_year
+ssc_education_category
+ssc_result
+( hsc_ssc_passing_year
+  hsc_ssc_education_category
+  hsc_ssc_result )
+
+hsc_ongoing_year
+hsc_passing_year
+hsc_education_category
+hsc_result
+(
+honours_ong_hsc_passing_year
+honours_ong_hsc_edu_category
+honours_ong_hsc_result
+)
+
+
+( diploma_ongoing_ssc_passing_year
+  diploma_ongoing_ssc_education_category
+  diploma_ongoing_ssc_result
+  diploma_ssc_passing_year
+  diploma_ssc_education_category
+  diploma_ssc_result)
+
+(
+honours_ong_diploma_passing_subject
+honours_ong_diploma_passing_year
+honours_ong_diploma_passing_institut
+honours_diploma_passing_subject
+honours_diploma_passing_year
+honours_diploma_passing_institut
+)
+diploma_ongoing_subject
+diploma_ongoing_year
+diploma_ongoing_institut
+diploma_passing_subject
+diploma_passing_year
+diploma_passing_institut
+after_ssc_education
+(
+honours_after_ssc_education
+masters_after_ssc_education
+)
+
+(
+honours_ongoing_ssc_passing_year
+honours_ongoing_ssc_education_category
+honours_ongoing_ssc_result
+honours_ssc_passing_year
+honours_ssc_education_category
+honours_ssc_result
+)
+
+(
+honours_ong_hsc_edu_category
+honours_ong_hsc_passing_year
+honours_ong_hsc_result
+honours_hsc_passing_year
+honours_hsc_edu_category
+honours_hsc_result
+)
+
+honours_ongoing_subject
+honours_ongoing_year
+honours_ongoing_institut
+honours_passing_subject
+honours_passing_year
+honours_passing_institut
+
+(
+masters_ssc_passing_year
+masters_ssc_education_category
+masters_ssc_result
+)
+
+(
+masters_hsc_passing_year
+masters_hsc_edu_category
+masters_hsc_result
+)
+
+(
+masters_diploma_passing_subject
+masters_diploma_passing_year
+masters_diploma_passing_institut
+)
+
+(
+masters_honours_passing_subject
+masters_honours_passing_year
+masters_honours_passing_institut
+)
+masters_passing_subject
+masters_passing_year
+masters_passing_institut
+
+ibtidaiyah_passing_year
+ibtidaiyah_result
+ibtidaiyah_madrasa_name
+other_educational
+
+mutawasita_passing_year
+mutawasita_result
+mutawasita_madrasa_name
+
+
+sanabia_passing_year
+sanabia_result
+sanabia_madrasa_name
+
+fazilat_passing_year
+fazilat_result
+fazilat_madrasa_name
+
+taqmeel_passing_year
+taqmeel_result
+taqmeel_madrasa_name
+
+(
+takhassus_taqmeel_passing_year
+takhassus_taqmeel_result
+takhassus_taqmeel_madrasa_name
+)
+
+takhassus_passing_subject
+takhassus_passing_year
+takhassus_result
+takhassus_madrasa_name
+education_validate
+
+id="family-information"
+family_type
+father_name
+father_current_condition
+father_profession
+mother_name
+mother_current_condition
+mother_profession
+brother_count
+brother_info -textarea
+sister_count
+sister_info -textarea
+uncles_info -textarea
+family_financial_info
+social_status_info -textarea
+family_members_info
+family_religious_status -textarea
+familyinfo_validate
+
+id="parsonal-information"
+salat_year
+mahram_non_mahram
+full_islamic_veil -female
+keep_your_eyes_peeled
+quran_recitation
+obligatory_beard -male
+ankle_dress -male
+outside_outside_clothes
+fasting_seeds
+any_creed_sect
+religious_knowledge_source
+favorite_islamic_book
+favorite_islamic_scholar
+physical_mental_condition
+eat_drink_intoxicating -male
+watch_listen_movies_songs
+involved_establish_religion
+political_philosophy
+beliefs_shrine
+about_next_generation
+about_yourself -textarea
+home_responsibilities -textarea
+gender_equality -female
+religious_worldly_qualifi
+options_apply_you
+male_phone -male
+female_phone -female
+personalinfo_validate
+
+id="profession-information"
+profession
+profession_details
+workplace
+income_verify
+monthly_income
+
+id="marriage-information"
+parents_consent
+currently_wife_children -married
+married_again -(married, textarea)
+
+divorce_reason -(divorced, textarea)
+husband_death_year -(widow, textarea)
+wife_new_relationship -(widow, textarea)
+wife_death_year -(widower, textarea)
+husband_new_relationship -(widower, textarea)
+
+why_getting_married -textarea
+obedience_husband -female
+job_after_marriage -female
+husband_responsibilities -female,textarea
+
+after_marriage_veil -male
+wife_after_marriage_job -male
+wife_after_marriage_live -male
+wife_responsibilities -male,textarea
+expect_wedding_gift -male
+
+about_mohar
+student_unemployed -female
+second_wife -female
+widow_divorced_woman -male
+compromise_wife -female
+compromise_husband -male
+
+id="expectation-information"
+expect_age
+expect_marital_type []
+expect_district
+expect_skin_colors []
+expect_height
+expect_body_type []
+expect_education
+expect_creed_sect
+expect_profession
+expect_economic_status []
+expect_life_partner -textarea
+expect_something_special -textarea
+
+id="inquiries-information"
+guardian_permission
+information_true
+responsibility
+
+id="contact-information"
+husband_name -male
+wife_name -female
+guardian_mobile
+guardian_relation
+receive_biodata_email
+
+//////////////////////////////////////////////////
+
+$biodata = Biodata::with('subBiodata')->where('customer_id', $id)->first();
+$ php artisan make:migration add_column_to_sub_biodatas_table --table=sub_biodatas
+
+/////////////////
+<option value="imam" {{ optional($biodata)->subBiodata->profession == 'imam' ? 'selected' : '' }}>ইমাম</option>
+
+<textarea
+name="profession_details"
+class="input-filup-text"
+>{{ optional($biodata)->subBiodata->profession_details ?? '' }}</textarea>
+
+value="{{ optional($biodata)->subBiodata->workplace ?? '' }}"
+
+<option value="orphan" {{ in_array('orphan', $explode_economic_status) ? 'selected' : '' }}>এতিম</option>
+
+{{-- male --}}
+@if ($biodata->biodata_type == 'male')
+    <div class="dsb-ebf-item dsb-ebf-text-item">
+        <label for="">কোন নেশাদার দ্রব্য খান/পান করেন?</label>
+        <p><span>{{ optional($biodata)->subBiodata->eat_drink_intoxicating ?? '' }}</span></p>
+    </div>
+@endif
+{{-- end --}}
+////////////////////////////////////////////////////////////////////
+
+@if (in_array($biodata->highest_education, ['ssc', 'hsc', 'diploma_ongoing','diploma', 'honours_ongoing', 'honours', 'masters' ]))
+
+<p><span>{{ optional($biodata)->born_raised ?? '' }}</span></p>
+
+<p><span>{{ __('biodata.profession.' . optional($biodata->subBiodata)->profession) }}</span></p>
+
+<p>{{ __('biodata.profession.' . optional($biodata->subBiodata)->profession) }}</p>
+
+//////////
+
+value="{{ optional(optional($biodata)->subBiodata)->salat_year ?? '' }}"
+
+<option value="salafi_ahlul" {{ optional($biodata->subBiodata)->any_creed_sect == 'salafi_ahlul' ? 'selected' : '' }}>সালাফি/আহলুল হাদিস</option>
